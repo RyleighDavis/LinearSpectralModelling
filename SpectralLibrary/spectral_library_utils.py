@@ -50,10 +50,19 @@ class LibrarySpectrum:
             
         return d
         
-    def save(self, filenm):
-        """ Add LibrarySpectrum to the spectral library (HDF5 file)."""
+    def save(self, filenm, overwrite=False):
+        """ Add LibrarySpectrum to the spectral library (HDF5 file).
+        
+        INPUTS:
+            filenm: str: name of hdf5 spectral library file
+            overwrite: bool: if True, overwrite spectra with same name"""
         
         with h5py.File(filenm, 'a') as f:
+            
+            if overwrite is True:
+                #Remove existing dataset with same name
+                del f[self.name]
+            
             # create data set
             dset = f.create_dataset(self.name, data=np.stack((self.wavelength, self.albedo), axis=1))
             
