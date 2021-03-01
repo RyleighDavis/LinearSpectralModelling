@@ -20,7 +20,7 @@ class LibrarySpectrum:
     temp: float # temperature of sample (K)
     grain_size: np.array # grain size [min, max] (microns)
     spec_type: str # lab, shkuratov (from optical constants), etc.
-    hydration: int # hydration state 0=anhydrous, 2 = (H2O)2, etc.
+    hydration: int # hydration state 0=anhydrous, 2 = (H2O)2, etc., 1000 for aqueous brine
     spec_features: np.array # major spectral features (microns)
     source: str # where was data accessed? link if available
     citation: str # paper/citation
